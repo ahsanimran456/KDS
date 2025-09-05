@@ -1,0 +1,361 @@
+/* ====== KDS: Fluid tokens for every screen (phones → 4K/TV) ====== */
+
+/* Base fluid root sizing (rem scales with viewport) */
+html {
+  /* Keeps text comfortable from 320px → 3840px */
+  font-size: clamp(14px, 0.95vw, 18px);
+}
+
+/* ---- Design tokens (colors, type, spacing, radii) ---- */
+:root {
+  /* Palette */
+  --kds-bg: #0f0f0f;
+  --kds-fg: #eaeaea;
+  --kds-border: #292929;
+  --kds-surface: #393939;
+  --kds-surface-2: #393939;
+  --kds-stroke: #BFBFBF;
+  --kds-stroke-2: #333;
+
+  /* Global scale multiplier for far-view TVs etc. */
+  --kds-scale: 1;
+  /* 1.1~1.25 for large TV distances */
+
+  /* Fluid type scale */
+  --kds-fs-2xs: clamp(0.70rem, 0.58rem + 0.28vw, 0.84rem);
+  --kds-fs-xs: clamp(0.78rem, 0.62rem + 0.35vw, 0.95rem);
+  --kds-fs-sm: clamp(0.88rem, 0.70rem + 0.42vw, 1rem); 
+  --kds-fs-md: clamp(0.98rem, 0.78rem + 0.52vw, 1.18rem);
+  --kds-fs-lg: clamp(1.10rem, 0.90rem + 0.70vw, 1.38rem);
+  --kds-fs-xl: clamp(1.28rem, 1.02rem + 0.95vw, 1.70rem);
+  --kds-fs-xxl:  clamp(1rem, 0.9rem + 0.6vw, 1.5rem);;
+
+  /* Line heights */
+  --kds-lh-tight: 1.15;
+  --kds-lh-normal: 1.35;
+
+  /* Fluid spacing */
+  --kds-gap: clamp(6px, 0.3vw, 18px);
+  --kds-gap-main: clamp(6px, .8vw, 18px);
+  --kds-pad-x: clamp(10px, 1vw, 24px);
+  --kds-pad-y: clamp(8px, 0.7vw, 18px);
+
+  /* Control sizes */
+  --kds-control-h: clamp(32px, 2.4vw, 44px);
+  /* buttons/inputs */
+  --kds-icon-size: clamp(28px, 2.4vw, 40px);
+
+  /* Radius */
+  --kds-radius: 7px;
+  --kds-radius-input: 10px;
+  --kds-radius-pill: 999px;
+
+  /* Shadows / outlines */
+  --kds-inset: inset 0 0 0 1px var(--kds-stroke-2);
+}
+
+/* Big-screen boosts for 1080p+ and 1440p+/4K TVs */
+@media (min-width: 1920px) {
+  :root {
+    --kds-scale: 1.12;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --kds-scale: 1.22;
+  }
+}
+
+/* ================== COMPONENTS ================== */
+
+.kds-header {
+  background: var(--kds-bg);
+  padding-top: 0;
+  color: var(--kds-fg);
+  border-bottom: 1px solid var(--kds-border);
+  padding: calc(var(--kds-pad-y) * var(--kds-scale)) calc(var(--kds-pad-x) * var(--kds-scale)) calc(var(--kds-pad-y) * var(--kds-scale) + 2px);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: calc(var(--kds-fs-sm) * var(--kds-scale));
+  line-height: var(--kds-lh-normal);
+      height: 7rem;
+}
+
+.kds-toolbar {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--kds-gap) * var(--kds-scale));
+  height: calc(3rem * var(--kds-scale));
+}
+
+.kds-left {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: calc((var(--kds-gap-main) * 0.75) * var(--kds-scale));
+}
+
+.kds-pill-row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--kds-gap) * var(--kds-scale));
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+  /* safe side */
+}
+
+.kds-pill-row::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+    height: 2rem;;                /* pura height cover kare */
+  background-color: #BFBFBF;   /* line ka color */
+  margin: 0 4px;               /* dono side thoda gap */
+}
+
+.kds-pill-row .kds-pill {
+  min-height: calc((var(--kds-control-h) - 8px) * var(--kds-scale));
+  padding: calc((var(--kds-pad-y) * 0.7) * var(--kds-scale)) calc((var(--kds-pad-x) * 0.9) * var(--kds-scale));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.kds-pill-row .kds-pill .kds-pill__label {
+  line-height: var(--kds-lh-tight);
+  font-size: calc(var(--kds-fs-xs) * var(--kds-scale));
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Scrollable pills (categories) */
+.kds-cat-scroll {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--kds-gap) * var(--kds-scale));
+  width: 100%;
+  overflow-x: auto;
+  padding: calc((var(--kds-pad-y) * 0.8) * var(--kds-scale)) 0;
+  scrollbar-width: thin;
+  scrollbar-color: #555 var(--kds-bg);
+}
+
+
+/* Chrome, Edge, Safari */
+.kds-cat-scroll::-webkit-scrollbar {
+  height: 2px;
+}
+
+.kds-cat-scroll::-webkit-scrollbar-track {
+  background: var(--kds-bg);
+}
+
+.kds-cat-scroll::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+.kds-pill--cat {
+  padding: calc((var(--kds-pad-y) * 0.55) * var(--kds-scale)) calc((var(--kds-pad-x)) * var(--kds-scale));
+}
+
+.kds-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--kds-gap) * 0.6);
+  border-radius: var(--kds-radius-pill);
+  background: var(--kds-surface-2);
+  border: .1rem solid #B0B0B0;
+  color: #E6E6E6;
+  box-shadow: var(--kds-inset);
+  line-height: 1;
+  cursor: pointer;
+  font-size: calc(var(--kds-fs-xs) * var(--kds-scale));
+  font-weight: 600;
+  white-space: nowrap;
+
+
+  min-height: calc((var(--kds-control-h) - 8px) * var(--kds-scale));
+  padding: calc((var(--kds-pad-y) * 0.7) * var(--kds-scale)) calc((var(--kds-pad-x) * 0.9) * var(--kds-scale));
+}
+
+/* Pill badge */
+.kds-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: calc(18px * var(--kds-scale));
+  height: calc(18px * var(--kds-scale));
+  padding: 0 calc(5px * var(--kds-scale));
+  border-radius: var(--kds-radius-pill);
+  font-size: calc(10px * var(--kds-scale));
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  color: #fff;
+  background-color: #50B060;
+}
+
+/* Pill color variants */
+.kds-pill--all {
+  background: #DBFFE1;
+  color: #2A2A2A;
+  border: 1px solid #50B060;
+}
+
+.kds-pill--dinein {
+  background: #DEF5FF;
+  color: #2A2A2A;
+  border: 1px solid #03A3E5;
+}
+
+.kds-pill--homedelivery {
+  background: #FFEEDB;
+  color: #2A2A2A;
+  border: 1px solid #FFA33B;
+}
+
+.kds-pill--foodpanda {
+  background: #FFDCEB;
+  color: #2A2A2A;
+  border: 1px solid #D71465;
+}
+
+.kds-pill--green {
+  background: #213d21;
+  color: #c9ffbf;
+}
+
+/* Badge colors */
+.kds-badge--all {
+  background: #50B060;
+  color: #fff;
+}
+
+.kds-badge--dinein {
+  background: #03A3E5;
+  color: #fff;
+}
+
+.kds-badge--homedelivery {
+  background: #FFA33B;
+  color: #fff;
+}
+
+.kds-badge--foodpanda {
+  background: #D71465;
+  color: #fff;
+}
+
+.kds-badge--green {
+  background: #3ba13b;
+  color: #001600;
+}
+
+.kds-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: calc(var(--kds-gap) * var(--kds-scale));
+  width: 50%;
+  flex-grow: 1;
+  position: relative;
+}
+
+.kds-actions::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 2rem;
+  ;
+  /* pura height cover kare */
+  background-color: #BFBFBF;
+  /* line ka color */
+  margin: 0 4px;
+  /* dono side thoda gap */
+}
+
+
+/* Inputs */
+.kds-input,
+.kds-btn,
+.kds-icon {
+  background: var(--kds-surface);
+  color: #ddd;
+  border: 1px solid var(--kds-stroke);
+  border-radius: var(--kds-radius);
+  line-height: 1;
+  width: 100%;
+}
+
+.kds-input {
+  padding: 0 calc(10px * var(--kds-scale));
+  height: calc(var(--kds-control-h) * var(--kds-scale));
+  font-size: calc(var(--kds-fs-sm) * var(--kds-scale));
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.2rem;
+  border-radius: var(--kds-radius-input);
+
+}
+
+.kds-input::placeholder {
+  color: #E6E6E6;
+  font-size: calc(var(--kds-fs-2xs) * var(--kds-scale));
+}
+
+.kds-btn {
+  padding: 0 calc(10px * var(--kds-scale));
+  height: calc(var(--kds-control-h) * var(--kds-scale));
+  font-size: calc(var(--kds-fs-sm) * var(--kds-scale));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kds-btn--undoprocess {
+  background: #3D8D6C;
+  color: #fff;
+  border: unset;
+}
+
+.kds-btn--undoprocess.reload {
+  background-color: #62CCA8 !important;
+}
+
+.kds-icon {
+  width: calc(var(--kds-icon-size) * var(--kds-scale));
+  height: calc(var(--kds-icon-size) * var(--kds-scale));
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--kds-fs-sm) * var(--kds-scale));
+}
+
+.kds-subtitle {
+  margin-top: calc((var(--kds-gap) * 0.8) * var(--kds-scale));
+    font-size: var(--kds-fs-xxl);
+  color: #EAEAEA;
+  height: calc(2rem * var(--kds-scale));
+}
+
+/* Optional: compact tweaks for very small screens */
+@media (max-width: 380px) {
+  :root {
+    --kds-scale: 0.95;
+  }
+}
+@media (min-width: 2000px) {
+  .kds-header {
+     height: 9rem;
+  }
+}

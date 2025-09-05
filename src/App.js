@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Button, Navbar, Container } from 'react-bootstrap';
+import { FaReact } from 'react-icons/fa';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import KDSHeader from './KdsHeader';
+import KDSBoard from './KDSBoard';
+import KDSLane, { sampleOrders } from "./KDSBoard";
+import KDSMenu from './KDSBoard';
+import KDSCard from './KDSBoard';
+import Dashboard from './KDSBoard';
+import Header2 from './Header2';
 
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+       <KDSHeader />
+       {/* <Header2 /> */}
+       <Dashboard />
+    </>
   );
 }
 
