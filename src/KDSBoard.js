@@ -1,5 +1,5 @@
 import RestaurantCard from "./RestaurantCard"
-import "./Dashboard.css"
+// import "./Dashboard.css"
 import { type } from "@testing-library/user-event/dist/type"
 
 const Dashboard = () => {

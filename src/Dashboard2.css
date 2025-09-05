@@ -1,0 +1,228 @@
+:root {
+  --card-min: 11rem;
+  /* ~250px */
+  --card-max: 11rem;
+  /* ~320px */
+  --gap: .75rem;
+  /* equal gap sab screens pe */
+  --gap-pad: 1rem;
+}
+
+
+
+.dashboard {
+  height: calc(100vh - 7.1rem);
+  background: black;
+  overflow-y: hidden;
+overflow-x: auto;
+}
+
+/* ==== Custom Scrollbar (Webkit browsers: Chrome, Edge, Safari) ==== */
+.dashboard::-webkit-scrollbar {
+  width: 6px;
+  /* patla scrollbar */
+}
+
+.dashboard::-webkit-scrollbar-track {
+  background: transparent;
+  /* track invisible */
+}
+
+.dashboard::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  /* halka white/grey */
+  border-radius: 10px;
+  /* gol edges */
+}
+
+.dashboard::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  /* hover pe thoda dark */
+}
+
+/* .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+  gap: var(--gap);
+  padding: var(--gap-pad);
+  margin: 0 auto;
+  width: 100%;
+  overflow-y: auto;
+  grid-auto-rows: minmax(min-content, auto);
+  align-items: start;
+} */
+
+/* .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--gap);
+  padding: var(--gap-pad);
+  margin: 0 auto;
+  width: 100%;
+  grid-auto-rows: minmax(min-content, auto);
+  align-items: start;
+} */
+/* .dashboard-grid {
+  column-count: auto;
+  column-width: 14rem;
+  column-gap: var(--gap);
+  padding: var(--gap-pad);
+  width: 100%;
+} */
+/* 
+.dashboard-grid {
+  display: flex;
+  flex-direction: column; 
+  gap: var(--gap);        
+  padding: var(--gap-pad);
+  width: 100%;
+}
+.restaurant-card {
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  height: fit-content; 
+} */
+
+
+/* .dashboard-grid {
+   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;             
+  gap: var(--gap);            
+  padding: var(--gap-pad);
+  width: 100%;
+    height: calc(100vh - 7.1rem);
+  background: black;
+  overflow-y: hidden;
+overflow-x: auto;
+}
+
+.restaurant-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;      
+  width: 17rem;             
+  max-width: 17rem !important; 
+} */
+
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start; 
+  gap: var(--gap);
+  padding: var(--gap-pad);
+  width: 100%;
+  height: calc(100vh - 7.1rem); 
+  background: black;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.restaurant-card {
+  width: 17rem;  
+  max-width: 17rem;
+  flex: 0 0 auto; 
+  margin-bottom: var(--gap);
+}
+
+
+/* .restaurant-card {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 var(--gap);
+} */
+
+
+
+/* ==== Custom Scrollbar (Webkit browsers: Chrome, Edge, Safari) ==== */
+.dashboard-grid::-webkit-scrollbar {
+  width: 6px;
+  /* patla scrollbar */
+}
+
+.dashboard-grid::-webkit-scrollbar-track {
+  background: transparent;
+  /* track invisible */
+}
+
+.dashboard-grid::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  /* halka white/grey */
+  border-radius: 10px;
+  /* gol edges */
+}
+
+.dashboard-grid::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  /* hover pe thoda dark */
+}
+
+/* ==== Firefox ke liye ==== */
+.dashboard-grid {
+  scrollbar-width: thin;
+  /* patla */
+  scrollbar-color: rgba(255, 255, 255, .4) transparent;
+  /* thumb + track */
+}
+
+
+
+
+/* .restaurant-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  height: fit-content;
+} */
+/* 
+@media (max-width: 30rem) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 30.1rem) and (max-width: 48rem) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+}
+
+@media (min-width: 48.1rem) and (max-width: 64rem) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+@media (min-width: 64.1rem) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-max), 1fr));
+  }
+} */
+
+
+@media (min-width: 2000px) {
+  .dashboard {
+    height: calc(100vh - 9rem);
+  }
+}

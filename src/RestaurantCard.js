@@ -77,11 +77,11 @@ const RestaurantCard = ({ orderType, orderNumber, customerName, timeStamps, food
                                     <div className="d-flex gap-2 align-items-center">
                                         {!item?.ready ? null :  
                                         <div className="item-icon-half ">
-                                            {<TbPercentage size={22} color="fff" />}
+                                            {<TbPercentage size={17} color="fff" />}
                                         </div>
                                         }
                                         <div className="item-icon">
-                                            {item?.ready ? <FaCheck color="000000" size={17} /> : <BiSolidDish size={17} color="000000" />}
+                                            {item?.ready ? <FaCheck color="000000" size={15} /> : <BiSolidDish size={15} color="000000" />}
                                         </div>
                                     </div>
                                 </div>

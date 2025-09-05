@@ -9,6 +9,7 @@ import KDSMenu from './KDSBoard';
 import KDSCard from './KDSBoard';
 import Dashboard from './KDSBoard';
 import Header2 from './Header2';
+import Dashboard2 from './Dashboard2';
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
     <>
        <KDSHeader />
        {/* <Header2 /> */}
-       <Dashboard />
+       {/* <Dashboard /> */}
+       <Dashboard2 />
     </>
   );
 }
